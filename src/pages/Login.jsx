@@ -1,8 +1,20 @@
 import { TypeAnimation } from "react-type-animation";
 import img from "../assets/img.png";
+import { UserAuth } from "../context/AuthContext";
 
 const Login = () => {
-  return (
+  const {signInWithGoogle,currentUser} = UserAuth();
+  console.log(currentUser);
+
+  const handleLogin = async ()=>{
+      // implement sign in
+      try{
+        await signInWithGoogle();
+      }catch(error){
+        console.log(error)
+      }
+  }
+    return (
     <div className="flex h-screen">
       {/* pics */}
       <div
@@ -41,7 +53,7 @@ const Login = () => {
 
           <div className="space-y-4">
             {/* social Login buttons */}
-            <button className="w-full bg-red-400 rounded-full shadow-lg hover:bg-red-200">Login with Google</button>
+            <button onClick={handleLogin} className="w-full bg-red-400 rounded-full shadow-lg hover:bg-red-200">Login with Google</button>
             <button className="w-full bg-blue-400 rounded-full shadow-lg hover:bg-blue-200">Login with Facebook</button>
             <button className="w-full bg-black rounded-full shadow-lg hover:bg-gray-700 text-white">Login with Twitter</button>
           </div>
