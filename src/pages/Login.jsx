@@ -1,9 +1,12 @@
 import { TypeAnimation } from "react-type-animation";
 import img from "../assets/img.png";
 import { UserAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const Login = () => {
   const {signInWithGoogle,currentUser} = UserAuth();
+  const navigate = useNavigate();
   console.log(currentUser);
 
   const handleLogin = async ()=>{
@@ -13,7 +16,15 @@ const Login = () => {
       }catch(error){
         console.log(error)
       }
+     
   }
+
+  useEffect(()=>{
+    if(currentUser){
+      navigate('/chat')
+    }
+  }, [currentUser])
+  
     return (
     <div className="flex h-screen">
       {/* pics */}

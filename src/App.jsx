@@ -9,16 +9,20 @@ import Chatscreen from "./pages/Chatscreen";
 function App() {
   return (
     <>
-
       <AuthProvider>
+      <Navbar/>
         <Routes>
-          <Route path="/" element={<Login/>} />
-          <Route path="/chat" element={<PrivateRoute component={<Chatscreen />}/>} />
+          <Route path="/" element={<Login />} />
+          <Route
+            path="/chat"
+            element={
+              <PrivateRoute>
+                <Chatscreen />
+              </PrivateRoute>
+            }
+          />
         </Routes>
-      {/* <Navbar/> */}
-     
-
-    
+       
       </AuthProvider>
     </>
   );

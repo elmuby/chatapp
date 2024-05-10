@@ -3,19 +3,16 @@ import { Navigate } from "react-router-dom";
 import Chatscreen from "../pages/Chatscreen";
 import { UserAuth } from "../context/AuthContext";
 
-const PrivateRoute = ({ component: Component, authenticated, ...rest }) => {
+const PrivateRoute = ({ children}) => {
   const { currentUser } = UserAuth();
+  console.log(currentUser)
 
-  const [isAuthenticated, setIsAunthenticated] = useState(
-    currentUser ? true : false
-  );
+  if(!currentUser){
+    return < Navigate to="/" replace={true} />
+  }
 
-  return isAuthenticated ? (
-    // <component {...rest} />
-    <Chatscreen />
-  ) : (
-    <Navigate to="/" replace />
-  );
-};
+  return children;
+ 
+}
 
 export default PrivateRoute;
