@@ -39,7 +39,7 @@ const ChatInput = () => {
           type="text"
           placeholder="Send Message.."
           className="input  focus:outline-none w-full bg-amber-200 rounded-full"
-          onChange={(e) => setText(e.target.value)}
+          onChange={e => setText(e.target.value)}
         />
         <button
           className="w-auto bg-amber-700 text-white rounded-r-lg text-lg px-5"
