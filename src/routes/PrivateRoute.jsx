@@ -5,7 +5,7 @@ import { UserAuth } from "../context/AuthContext";
 
 const PrivateRoute = ({ children}) => {
   const { currentUser } = UserAuth();
-  console.log(currentUser)
+  // console.log(currentUser)
 
   if(!currentUser){
     return < Navigate to="/" replace={true} />
